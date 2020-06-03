@@ -10,11 +10,12 @@ const { v4:uuidv4 } = require('uuid');
 
 // GET "/api/notes" responds with all notes from the database. 500 = server cannot process request for some unknown reason
 router.get("/api/notes", (req, res) => {
-  readFileAsync("data/db.json", "utf-8")
+  readFileAsync("data/db.json", "utf8")
     .then(notes => res.json(JSON.parse(notes)))
     .catch(err => res.status(500).json(err));
 });
 
+//post api notess
 router.post("/api/notes", (req, res) => {
   req.body.id = uuidv4();
   data.push(req.body);
